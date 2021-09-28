@@ -17,6 +17,9 @@ autoload -Uz promptinit
 promptinit
 prompt powerline
 
+# anyenv
+eval "$(anyenv init -)"
+
 # incremental history search with peco
 # ref. https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
 function peco-history-selection() {
