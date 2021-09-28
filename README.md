@@ -2,6 +2,6 @@
 
 ## Installation
 
-```console
+```shellsession
 ./etc/install.sh
 ```
