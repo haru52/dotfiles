@@ -30,3 +30,7 @@ function peco-history-selection() {
 
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
+
+# Suppress brew doctor warning caused by pyenv
+# https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
