@@ -1,3 +1,3 @@
 .PHONY: install
 install:
-	./etc/install.sh
+	./bin/install.sh
