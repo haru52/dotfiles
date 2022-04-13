@@ -1,6 +1,8 @@
 #!/bin/sh
 
-\cp -f ~/workspace/dotfiles/.zshrc ~/.zprezto/runcoms/zshrc
-ln -sf ~/.zprezto/runcoms/zshrc ~/.zshrc
-ln -sf ~/workspace/dotfiles/.vimrc ~
-ln -sf ~/workspace/dotfiles/.gitignore_global ~
+dotfiles_path=$(cd $(dirname $0)/../dotfiles/ && pwd)
+
+cp -f $dotfiles_path/.zshrc ~/.zprezto/runcoms/zshrc
+
+ln -sf $dotfiles_path/.gitignore_global ~
+ln -sf $dotfiles_path/.vimrc ~
