@@ -12,16 +12,11 @@ fi
 
 # Customize to your needs...
 
-# Prezto prompt theme
-autoload -Uz promptinit
-promptinit
-prompt powerline
+# asdf
+. /usr/local/opt/asdf/libexec/asdf.sh
 
-# anyenv
-eval "$(anyenv init -)"
-
-# incremental history search with peco
-# ref. https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
+# Incremental history search with peco
+# Refs: https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
 function peco-history-selection() {
   BUFFER=`history -n 1 | tail -r | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
@@ -31,9 +26,10 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-# Suppress brew doctor warning caused by pyenv
-# https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+# Suppress brew doctor warning caused by asdf python
+# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 
 # Path
 export PATH=$HOME/bin:$PATH
+# export PATH="/usr/local/opt/openssl/bin:$PATH"
