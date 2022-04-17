@@ -1,9 +1,16 @@
 #!/bin/sh
 
-dotfiles_path=$(cd $(dirname $0)/../dotfiles/ && pwd)
+cd $(dirname $0)/../dotfiles || exit 1
 
-cp -fv $dotfiles_path/.zpreztorc ~/.zprezto/runcoms/zpreztorc
-cp -fv $dotfiles_path/.zshrc ~/.zprezto/runcoms/zshrc
+dotfiles_path=$(pwd)
 
-ln -sfv $dotfiles_path/.gitignore_global ~
-ln -sfv $dotfiles_path/.vimrc ~
+ls_dotfiles=$(ls -a $dotfiles_path)
+
+for file_name in ${ls_dotfiles[@]}; do
+  file_path=$dotfiles_path/$file_name
+  if [ -f $file_path ]; then
+    ln -sfv $file_path ~
+  fi
+done
+
+cp -fv $dotfiles_path/zprezto/* ~/.zprezto/runcoms
