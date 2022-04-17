@@ -1,0 +1,22 @@
+[user]
+	name = haru
+	email = haru@haru52.com
+	signingkey = 4EE000DE05880F22
+[core]
+	editor = vim -c \"set fenc=utf-8\"
+	excludesfile = /Users/haru/.gitignore_global
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	pl = pull
+	ps = push
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true
+[color]
+	ui = true
+[init]
+	defaultBranch = main
