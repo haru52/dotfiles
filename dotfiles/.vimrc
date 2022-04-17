@@ -1,4 +1,4 @@
-" ref. https://qiita.com/iwaseasahi/items/0b2da68269397906c14c
+" Refs: https://qiita.com/iwaseasahi/items/0b2da68269397906c14c
 
 " ファイルを上書きする前にバックアップを作ることを無効化
 set nowritebackup
