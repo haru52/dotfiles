@@ -12,6 +12,9 @@
 	st = status
 	pl = pull
 	ps = push
+	sw = switch
+	rb = rebase
+	ad = add
 [pull]
 	rebase = false
 [commit]
