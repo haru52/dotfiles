@@ -1,7 +1,7 @@
 [user]
 	name = haru
 	email = haru@haru52.com
-	signingkey = 4EE000DE05880F22
+	signingkey = FA4D1C737EF39350
 [core]
 	editor = vim -c \"set fenc=utf-8\"
 	excludesfile = /Users/haru/.gitignore_global
@@ -15,6 +15,7 @@
 	sw = switch
 	rb = rebase
 	ad = add
+	df = diff
 [pull]
 	rebase = false
 [commit]
