@@ -30,6 +30,9 @@ bindkey '^R' peco-history-selection
 # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # Path
 export PATH=$HOME/bin:$PATH
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
