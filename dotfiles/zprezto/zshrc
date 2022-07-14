@@ -12,13 +12,28 @@ fi
 
 # Customize to your needs...
 
+# Get the current OS name
+case $(uname) in
+  "Darwin") os="mac" ;;
+  "Linux") os="linux" ;;
+  *) exit 1 ;;
+esac
+
 # asdf
-. /usr/local/opt/asdf/libexec/asdf.sh
+case $os in
+  "mac") . /usr/local/opt/asdf/libexec/asdf.sh ;;
+  "linux") . "$HOME"/.asdf/asdf.sh ;;
+esac
 
 # Incremental history search with peco
 # Refs: https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
 function peco-history-selection() {
-  BUFFER=`history -n 1 | tail -r | awk '!a[$0]++' | peco`
+  case $os in
+    "mac") command="tail -r" ;;
+    "linux") command="tac" ;;
+  esac
+
+  BUFFER=`history -n 1 | "$command" | awk '!a[$0]++' | peco`
   CURSOR=$#BUFFER
   zle reset-prompt
 }
@@ -30,9 +45,10 @@ bindkey '^R' peco-history-selection
 # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
 alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
 
-# direnv
-eval "$(direnv hook zsh)"
-
 # Path
 export PATH=$HOME/bin:$PATH
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+if [ "$os" = "linux" ]; then
+  export GPG_TTY=$(tty)
+fi
