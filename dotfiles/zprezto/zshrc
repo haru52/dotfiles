@@ -50,5 +50,7 @@ export PATH=$HOME/bin:$PATH
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
 
 if [ "$os" = "linux" ]; then
+  /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_rsa
+  source "$HOME"/.keychain/"$HOST"-sh
   export GPG_TTY=$(tty)
 fi
