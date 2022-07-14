@@ -53,4 +53,6 @@ if [ "$os" = "linux" ]; then
   /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_rsa
   source "$HOME"/.keychain/"$HOST"-sh
   export GPG_TTY=$(tty)
+  win_user_path=$(wslpath $(wslvar USERPROFILE))
+  export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
 fi
