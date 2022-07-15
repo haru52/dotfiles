@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd "$(dirname "$0")"/../dotfiles || exit 1
+cd "$(dirname "$0")"/dotfiles || exit 1
 
 dotfiles_path=$(pwd)
 

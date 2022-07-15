@@ -1,7 +1,7 @@
 .PHONY: install dev-install lint lint-npm lint-text lint-yaml lint-sh lint-action update-gi
 
 install:
-	./bin/install.sh
+	./install.sh
 
 dev-install:
 	npm ci
