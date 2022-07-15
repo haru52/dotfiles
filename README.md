@@ -21,6 +21,8 @@ make
 
 [MIT](LICENSE)
 
+<!-- vale Microsoft.Vocab = NO -->
 ## Author
+<!-- vale Microsoft.Vocab = YES -->
 
 [haru](https://haru52.com/)
