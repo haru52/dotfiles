@@ -41,18 +41,34 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-# Suppress brew doctor warning caused by asdf python
-# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
-alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
-
-# Path
+# Path settings
 export PATH=$HOME/bin:$PATH
 # export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# OS specific settings
+
+# Mac
+if [ "$os" = "mac" ]; then
+  # Suppress brew doctor warning caused by asdf python
+  # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+fi
+
+# Linux
 if [ "$os" = "linux" ]; then
-  /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_rsa
-  source "$HOME"/.keychain/"$HOST"-sh
-  export GPG_TTY=$(tty)
+  # Path settings
+
+  # VS Code
   win_user_path=$(wslpath $(wslvar USERPROFILE))
   export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
+
+  # Homebrew
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  # GPG
+  export GPG_TTY=$(tty)
+
+  # SSH
+  /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_rsa
+  source "$HOME"/.keychain/"$HOST"-sh
 fi
