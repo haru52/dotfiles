@@ -33,7 +33,7 @@ function peco-history-selection() {
     "linux") command="tac" ;;
   esac
 
-  BUFFER=`history -n 1 | "$command" | awk '!a[$0]++' | peco`
+  BUFFER=$(history -n 1 | "$command" | awk '!a[$0]++' | peco)
   CURSOR=$#BUFFER
   zle reset-prompt
 }
@@ -59,7 +59,7 @@ if [ "$os" = "linux" ]; then
   # Path settings
 
   # VS Code
-  win_user_path=$(wslpath $(wslvar USERPROFILE))
+  win_user_path=$(wslpath "$(wslvar USERPROFILE)")
   export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
 
   # Homebrew
