@@ -19,7 +19,7 @@ lint-yaml:
 	yamllint --strict .
 
 lint-sh:
-	shellcheck .husky/commit-msg .husky/pre-commit
+	shellcheck *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit
 
 lint-action:
 	actionlint
