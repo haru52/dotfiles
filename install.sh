@@ -7,10 +7,10 @@ dotfiles_path=$repo_root_path/dotfiles
 
 os=$("$repo_root_path"/get-os.sh)
 
-ls_dotfiles=$(ls -a "$dotfiles_path")
+# https://www.shellcheck.net/wiki/SC2207
+mapfile -t ls_dotfiles < <(ls -A "$dotfiles_path")
 
-# shellcheck disable=SC2068
-for file_name in ${ls_dotfiles[@]}; do
+for file_name in "${ls_dotfiles[@]}"; do
   file_path=${dotfiles_path}/${file_name}
   if [ -f "$file_path" ]; then
     ln -sfv "$file_path" ~
