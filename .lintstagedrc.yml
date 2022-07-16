@@ -1,0 +1,10 @@
+---
+"*":
+  - secretlint
+  - prettier --check
+"*.{md,markdown}":
+  - markdownlint
+  - make lint-text
+"*.{yml,yaml}": make lint-yaml
+"{*.sh,.husky/*}": shellcheck
+".github/workflows/*.{yml,yaml}": actionlint
