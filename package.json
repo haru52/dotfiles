@@ -2,9 +2,23 @@
   "name": "dotfiles",
   "version": "1.0.0",
   "description": "haru's dotfiles.",
-  "main": "index.js",
+  "private": true,
+  "engines": {
+    "node": "^16.16.0",
+    "npm": "^8.11.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "run-s --continue-on-error lint:*",
+    "lint:credentials": "[ \"$CI\" = 'true' ] || secretlint \"**/*\"",
+    "lint:md": "markdownlint . \".?*/**/*.{md,markdown}\"",
+    "lint:prettier": "prettier --check .",
+    "format": "run-s --continue-on-error format:*",
+    "format:md": "npm run lint:md -- --fix",
+    "format:prettier": "prettier --write .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "cz",
+    "cm": "npm run commit",
+    "prepare": "[ \"$CI\" = 'true' ] || husky install"
   },
   "repository": {
     "type": "git",
