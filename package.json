@@ -1,0 +1,22 @@
+{
+  "name": "dotfiles",
+  "version": "1.0.0",
+  "description": "haru's dotfiles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haru52/dotfiles.git"
+  },
+  "keywords": [
+    "dotfiles"
+  ],
+  "author": "haru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haru52/dotfiles/issues"
+  },
+  "homepage": "https://github.com/haru52/dotfiles#readme"
+}
