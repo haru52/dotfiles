@@ -22,7 +22,7 @@ esac
 # asdf
 case $os in
   mac) . /usr/local/opt/asdf/libexec/asdf.sh ;;
-  linux) . "$HOME"/.asdf/asdf.sh ;;
+  linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
 esac
 
 # Incremental history search with peco
