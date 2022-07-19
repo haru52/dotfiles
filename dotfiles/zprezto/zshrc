@@ -63,6 +63,9 @@ if [ "$os" = "linux" ]; then
   win_user_path=$(wslpath "$(wslvar USERPROFILE)")
   export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
 
+  # Homebrew
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
   # GPG
   export GPG_TTY=$(tty)
 
