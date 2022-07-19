@@ -41,17 +41,18 @@ function peco-history-selection() {
 zle -N peco-history-selection
 bindkey '^R' peco-history-selection
 
-# Path settings
-export PATH=$HOME/bin:$PATH
-# export PATH="/usr/local/opt/openssl/bin:$PATH"
+# Suppress brew doctor warning caused by asdf python
+# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+case $os in
+  mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
+esac
 
 # OS specific settings
 
 # Mac
 if [ "$os" = "mac" ]; then
-  # Suppress brew doctor warning caused by asdf python
-  # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
-  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+  export PATH=$HOME/bin:$PATH
+  # export PATH="/usr/local/opt/openssl/bin:$PATH"
 fi
 
 # Linux
@@ -61,9 +62,6 @@ if [ "$os" = "linux" ]; then
   # VS Code
   win_user_path=$(wslpath "$(wslvar USERPROFILE)")
   export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
-
-  # Homebrew
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
   # GPG
   export GPG_TTY=$(tty)
