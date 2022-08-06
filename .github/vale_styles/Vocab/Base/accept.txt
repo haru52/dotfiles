@@ -1,5 +1,11 @@
+actionlint
+Contributing Guideline
 dotfiles
+gibo
 haru
 MIT
+npm
+repo
 UNIX
 WSL
+yamllint
