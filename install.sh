@@ -10,7 +10,8 @@ dotfiles_path=$repo_root_path/dotfiles
 os=$("$repo_root_path"/get-os.sh)
 
 # https://www.shellcheck.net/wiki/SC2207
-mapfile -t ls_dotfiles < <(ls -A "$dotfiles_path")
+ls_dotfiles=()
+while IFS='' read -r line; do ls_dotfiles+=("${line}"); done < <(ls -A "${dotfiles_path}")
 
 for file_name in "${ls_dotfiles[@]}"; do
   file_path=${dotfiles_path}/${file_name}
