@@ -46,6 +46,9 @@ case $os in
   mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
 esac
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # OS specific settings
 
 # Mac

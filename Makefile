@@ -1,4 +1,5 @@
 .PHONY: install dev-install lint lint-npm lint-text lint-yaml lint-sh lint-action update-gi
+.PHONY: update-gi-global
 
 install:
 	./install.sh
@@ -28,3 +29,8 @@ update-gi:
 	gibo update
 	cat .gitignore_custom >| .gitignore
 	gibo dump macOS Linux Windows VisualStudioCode JetBrains Vim Node >> .gitignore
+
+update-gi-global:
+	gibo update
+	cat .gitignore_global_custom >| dotfiles/.gitignore_global
+	gibo dump macOS Linux Windows VisualStudioCode JetBrains Vim >> dotfiles/.gitignore_global
