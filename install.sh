@@ -26,11 +26,13 @@ cp -fv "${dotfiles_path}"/zprezto/* ~/.zprezto/runcoms
 # OS specific installation
 
 # WSL2 Linux
-linux_dotfiles_path=${dotfiles_path}/linux
+wsl_dotfiles_path=${dotfiles_path}/wsl
 
+# WSL specific config
+# TODO: Add some condition to determine that the environment is WSL2
 if [[ "${os}" = linux ]]; then
-  sudo ln -sfv "${linux_dotfiles_path}"/wsl.conf /etc/wsl.conf
-  sudo ln -sfv "${linux_dotfiles_path}"/resolv_template.conf /etc/resolv_template.conf
+  sudo ln -sfv "${wsl_dotfiles_path}"/wsl.conf /etc/wsl.conf
+  sudo ln -sfv "${wsl_dotfiles_path}"/resolv_template.conf /etc/resolv_template.conf
 fi
 
 # Custom commands
