@@ -12,7 +12,7 @@ haru's dotfiles.
 ## Installation
 
 ```sh
-gh repo clone haru52/dotfiles # Clone this repository
+gh repo clone haru52/dotfiles # Clone this repo
 cd dotfiles
 make
 ```
