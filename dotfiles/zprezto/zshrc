@@ -49,6 +49,9 @@ esac
 # direnv
 eval "$(direnv hook zsh)"
 
+# For `$ rails app:update`
+export THOR_MERGE="code -d $1 $2"
+
 # OS specific settings
 
 # Mac
