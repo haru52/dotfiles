@@ -37,7 +37,7 @@ fi
 bin_path=$repo_root_path/bin
 mkdir -p ~/bin
 
-ln -sfv "$bin_path"/common/brew-update.sh ~/bin/brew-update
+ln -sfv "$bin_path"/all-update.sh ~/bin/all-update
 
 if [ "$os" = linux ]; then
   ln -sfv "$bin_path"/linux/all-update.sh ~/bin/all-update
