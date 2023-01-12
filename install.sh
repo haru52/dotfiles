@@ -29,7 +29,7 @@ cp -fv "${dotfiles_path}"/zprezto/* ~/.zprezto/runcoms
 wsl_dotfiles_path=${dotfiles_path}/wsl
 
 # WSL specific config
-# TODO: Add some condition to determine that the environment is WSL2
+# TODO: Add some conditions to determine that the environment is WSL2
 if [[ "${os}" = linux ]]; then
   sudo ln -sfv "${wsl_dotfiles_path}"/wsl.conf /etc/wsl.conf
   sudo ln -sfv "${wsl_dotfiles_path}"/resolv_template.conf /etc/resolv_template.conf
@@ -42,6 +42,5 @@ mkdir -p ~/bin
 ln -sfv "${bin_path}"/all-update.sh ~/bin/all-update
 
 if [[ "${os}" = linux ]]; then
-  ln -sfv "${bin_path}"/linux/all-update.sh ~/bin/all-update
   ln -sfv "${bin_path}"/linux/apt-update.sh ~/bin/apt-update
 fi
