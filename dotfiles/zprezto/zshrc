@@ -52,13 +52,14 @@ eval "$(direnv hook zsh)"
 # For `$ rails app:update`
 export THOR_MERGE="code -d $1 $2"
 
+export PATH=${HOME}/bin:${PATH}
+
 # OS specific settings
 
 # Mac
-if [ "$os" = "mac" ]; then
-  export PATH=$HOME/bin:$PATH
-  # export PATH="/usr/local/opt/openssl/bin:$PATH"
-fi
+# if [ "$os" = "mac" ]; then
+#   export PATH="/usr/local/opt/openssl/bin:$PATH"
+# fi
 
 # Linux
 if [ "$os" = "linux" ]; then
