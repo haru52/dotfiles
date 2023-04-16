@@ -12,7 +12,8 @@ fi
 
 # Homebrew
 if [ "${os}" = mac ]; then
-  alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew"
+  eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+  # alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" # Intel
 fi
 brew doctor; brew update && brew upgrade && brew cleanup
 

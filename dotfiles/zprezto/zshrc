@@ -21,7 +21,8 @@ esac
 
 # asdf
 case $os in
-  mac) . /usr/local/opt/asdf/libexec/asdf.sh ;;
+  mac) . /opt/homebrew/opt/asdf/libexec/asdf.sh ;; # Apple silicon
+  # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
   linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
 esac
 
@@ -42,9 +43,10 @@ bindkey '^R' peco-history-selection
 
 # Suppress brew doctor warning caused by asdf python
 # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
-case $os in
-  mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
-esac
+# case $os in
+  # Intel
+  # mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
+# esac
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -57,9 +59,10 @@ export PATH=${HOME}/bin:${PATH}
 # OS specific settings
 
 # Mac
-# if [ "$os" = "mac" ]; then
-#   export PATH="/usr/local/opt/openssl/bin:$PATH"
-# fi
+if [ "$os" = "mac" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+  # export PATH="/usr/local/opt/openssl/bin:$PATH"
+fi
 
 # Linux
 if [ "$os" = "linux" ]; then
