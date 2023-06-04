@@ -22,6 +22,8 @@ done
 
 # Zsh
 cp -fv "${dotfiles_path}"/zprezto/* ~/.zprezto/runcoms
+# TODO: etcというディレクトリ名など色々と適当なのでもう少し整理する
+cp -fv "${dotfiles_path}"/etc/alias.zsh ~/.zprezto/modules/git
 
 # OS specific installation
 
