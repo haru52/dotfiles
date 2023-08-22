@@ -88,4 +88,5 @@ case $os in
 esac
 
 # ESP-IDF
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
+# alias get_idf='. $HOME/esp/esp-idf/export.sh'
+# export PATH=${HOME}/.espressif/python_env/idf4.4_py3.9_env/bin:${PATH}
