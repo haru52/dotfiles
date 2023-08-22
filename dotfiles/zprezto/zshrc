@@ -19,13 +19,6 @@ case $(uname) in
   *) exit 1 ;;
 esac
 
-# asdf
-case $os in
-  mac) . /opt/homebrew/opt/asdf/libexec/asdf.sh ;; # Apple silicon
-  # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
-  linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
-esac
-
 # Incremental history search with peco
 # Refs: https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
 function peco-history-selection() {
@@ -61,6 +54,10 @@ export PATH=${HOME}/bin:${PATH}
 # Mac
 if [ "$os" = "mac" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+  # PostgreSQL
+  export PATH="/opt/homebrew/opt/postgresql@15/bin:${PATH}"
+  export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
   # export PATH="/usr/local/opt/openssl/bin:$PATH"
 fi
 
@@ -82,3 +79,10 @@ if [ "$os" = "linux" ]; then
   /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_ed25519
   source "$HOME"/.keychain/"$HOST"-sh
 fi
+
+# asdf
+case $os in
+  mac) . /opt/homebrew/opt/asdf/libexec/asdf.sh ;; # Apple silicon
+  # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
+  linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
+esac
