@@ -86,3 +86,6 @@ case $os in
   # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
   linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
 esac
+
+# ESP-IDF
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
