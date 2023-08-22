@@ -88,5 +88,11 @@ case $os in
 esac
 
 # ESP-IDF
+
+# ESP-IDF を使わないときはアンコメント。使うときはコメントアウト
+asdf global python 3.11.4
+
+# ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
+# asdf global python 3.9.6
 # alias get_idf='. $HOME/esp/esp-idf/export.sh'
 # export PATH=${HOME}/.espressif/python_env/idf4.4_py3.9_env/bin:${PATH}

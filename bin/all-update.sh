@@ -21,7 +21,7 @@ brew doctor; brew update && brew upgrade && brew cleanup
 asdf plugin update --all
 
 # Python pip
-pip install -U pip
+# pip install -U pip
 
 # RubyGems
 gem update --system
