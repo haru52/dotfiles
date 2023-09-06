@@ -90,7 +90,7 @@ esac
 # ESP-IDF
 
 # ESP-IDF を使わないときはアンコメント。使うときはコメントアウト
-asdf global python 3.11.4
+asdf global python 3.11.5
 
 # ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
 # asdf global python 3.9.6
