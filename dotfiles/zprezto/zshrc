@@ -89,10 +89,18 @@ esac
 
 # ESP-IDF
 
-# ESP-IDF を使わないときはアンコメント。使うときはコメントアウト
-asdf global python 3.11.5
+# ESP-IDF v4.4.6 を使わないときはアンコメント。使うときはコメントアウト
+asdf global python 3.12.1
 
-# ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
-# asdf global python 3.9.6
+# ESP-IDF v4.4.6 を使わないときはコメントアウト。使うときはアンコメント
+# export IDF_PATH=${HOME}/esp/esp-idf
+# export IDF_TOOLS_PATH=${HOME}/.espressif
+# asdf global python 3.11.7
 # alias get_idf='. $HOME/esp/esp-idf/export.sh'
-# export PATH=${HOME}/.espressif/python_env/idf4.4_py3.9_env/bin:${PATH}
+# export PATH=${HOME}/.espressif/python_env/idf4.4_py3.11_env/bin:${PATH}
+
+# ESP-IDF v5.1.2 を使わないときはコメントアウト。使うときはアンコメント
+# export IDF_PATH=${HOME}/esp5/esp-idf
+# export IDF_TOOLS_PATH=${HOME}/.espressif5
+# alias get_idf='. $HOME/esp5/esp-idf/export.sh'
+# export PATH=${HOME}/.espressif5/python_env/idf5.1_py3.12_env/bin:${PATH}
