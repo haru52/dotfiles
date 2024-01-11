@@ -49,6 +49,9 @@ export THOR_MERGE="code -d $1 $2"
 
 export PATH=${HOME}/bin:${PATH}
 
+# GPG
+export GPG_TTY=$(tty)
+
 # OS specific settings
 
 # Mac
@@ -71,9 +74,6 @@ if [ "$os" = "linux" ]; then
 
   # Homebrew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-  # GPG
-  export GPG_TTY=$(tty)
 
   # SSH
   /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_ed25519
