@@ -89,22 +89,36 @@ esac
 
 # ESP-IDF
 
-# ESP-IDFを使わないときはアンコメント。使うときはコメントアウト
+# ESP-IDF を使わないときはアンコメント。使うときはコメントアウト
 asdf global python 3.12.1
 
 # ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
+
+# ESP-IDF v4.4.2 を使わないときはコメントアウト。使うときはアンコメント
+
+# asdf global python 3.9.6
+
+# v4.4.2 以外の ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
+
 # asdf global python 3.11.7
 
-# ESP-IDF v4.4.6 を使わないときはコメントアウト。使うときはアンコメント
+# ESP-IDF v4.4 を使わないときはコメントアウト。使うときはアンコメント
 
-## ESP-IDF v4.4.6 インストール前にアンコメント開始
+## ESP-IDF v4.4 インストール前にアンコメント開始
 
 # export IDF_PATH=${HOME}/esp/esp-idf
 # export IDF_TOOLS_PATH=${HOME}/.espressif
 
-## ESP-IDF v4.4.6 インストール後にアンコメント開始
+## ESP-IDF v4.4 インストール後にアンコメント開始
 
 # alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
+## ESP-IDF v4.4.2 インストール後にアンコメント開始
+
+# export IDF_PYTHON_ENV_PATH=${HOME}/.espressif/python_env/idf4.4_py3.9_env
+
+## ESP-IDF v4.4.6 インストール後にアンコメント開始
+
 # export IDF_PYTHON_ENV_PATH=${HOME}/.espressif/python_env/idf4.4_py3.11_env
 
 # ESP-IDF v5.1.2 を使わないときはコメントアウト。使うときはアンコメント
@@ -121,6 +135,6 @@ asdf global python 3.12.1
 
 # ESP-IDF を使わないときはコメントアウト。使うときはアンコメント
 
-## ESP-IDFインストール後にアンコメント開始
+## ESP-IDF インストール後にアンコメント開始
 
 # export PATH=${IDF_PYTHON_ENV_PATH}/bin:${PATH}
