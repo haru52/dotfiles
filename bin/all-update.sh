@@ -22,8 +22,7 @@ brew doctor; brew update && brew upgrade && brew cleanup
 asdf plugin update --all
 
 # Python pip
-# Disable to preserve pip version for ESP-IDF environment
-# pip install -U pip
+pip install -U pip
 
 # RubyGems
 gem update --system

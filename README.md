@@ -17,18 +17,6 @@ cd dotfiles
 make
 ```
 
-## Usage
-
-### ESP-IDF
-
-```sh
-cd path/to/dotfiles
-vi dotfiles/zprezto/zshrc # Comment out and uncomment
-make
-exec $SHELL -l
-get_idf
-```
-
 ## License
 
 [MIT](LICENSE)

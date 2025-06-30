@@ -16,6 +16,8 @@
 	rb = rebase
 	ad = add
 	df = diff
+	delete-merged-branches = "!f () { git switch $1; git branch --merged|egrep -v '\\*|main|develop'|xargs git branch -d; git fetch --prune; };f"
+	delete-topic-branches = "!f () { git switch $1; git branch|egrep -v '\\*|main|develop'|xargs git branch -D; git fetch --prune; };f"
 [pull]
 	rebase = false
 [commit]
