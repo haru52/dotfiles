@@ -92,3 +92,7 @@ case $os in
   # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
   linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
 esac
+
+## uv
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
