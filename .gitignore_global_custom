@@ -4,4 +4,15 @@
 .envrc
 .env
 
+# Memo
+.memo.local.md
+.memo.local.mmd
+.memo/
+
+# Claude Code
+make-worktree.sh
+
+# Serena
+.serena/
+
 
