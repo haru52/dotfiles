@@ -42,6 +42,7 @@ bin_path=${repo_root_path}/bin
 mkdir -p ~/bin
 
 ln -sfv "${bin_path}"/all-update.sh ~/bin/all-update
+ln -sfv "${bin_path}"/rm-merged-worktrees.sh ~/bin/rm-merged-worktrees
 
 if [[ "${os}" = linux ]]; then
   ln -sfv "${bin_path}"/linux/apt-update.sh ~/bin/apt-update
