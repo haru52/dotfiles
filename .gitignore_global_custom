@@ -10,6 +10,7 @@
 .memo/
 
 # Claude Code
+.claude/settings.local.json
 make-worktree.sh
 
 # Serena
