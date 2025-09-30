@@ -4,8 +4,8 @@
   "description": "haru's dotfiles.",
   "private": true,
   "engines": {
-    "node": "^18.12.1",
-    "npm": "^8.19.2"
+    "node": "^22.20.0",
+    "npm": "^11.6.1"
   },
   "scripts": {
     "lint": "run-s --continue-on-error lint:*",
