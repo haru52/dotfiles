@@ -62,9 +62,30 @@ for branch in ${all_branches}; do
   fi
 
   # Check if branch is squash merged
-  # Compare the commit message of the branch with commits in default branch
-  branch_commit_msg=$(git log --format=%s "${branch}" | head -n 1)
-  if git log "origin/${default_branch}" --oneline | grep -qF "${branch_commit_msg}"; then
+  # Compare commit messages of the branch with commits in default branch
+  # Check both the latest commit (most common in squash merge) and all commits
+  is_squash_merged=false
+
+  # First, check the latest commit message (most likely to match in squash merge)
+  latest_commit_msg=$(git log --format=%s "${branch}" -1)
+  if git log "origin/${default_branch}" --format=%s | grep -qF "${latest_commit_msg}"; then
+    is_squash_merged=true
+  fi
+
+  # If not found, check all commit messages from the branch
+  if [ "${is_squash_merged}" = false ]; then
+    branch_commits=$(git log --format=%s "${branch}")
+    while IFS= read -r commit_msg; do
+      if git log "origin/${default_branch}" --format=%s | grep -qF "${commit_msg}"; then
+        is_squash_merged=true
+        break
+      fi
+    done <<EOF
+${branch_commits}
+EOF
+  fi
+
+  if [ "${is_squash_merged}" = true ]; then
     merged_branches="${merged_branches}${branch}\n"
   fi
 done
