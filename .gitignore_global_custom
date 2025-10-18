@@ -4,16 +4,17 @@
 .envrc
 .env
 
-# Memo
-.memo.local.md
-.memo.local.mmd
-.memo/
-
 # Claude Code
 .claude/settings.local.json
-make-worktree.sh
 
 # Serena
 .serena/
+
+# Memo
+.memo.local.md
+/.memo/
+
+# etc.
+make-worktree.sh
 
 
