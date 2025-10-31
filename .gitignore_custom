@@ -8,4 +8,7 @@
 /.github/vale_styles/Microsoft/
 /.github/vale_styles/write-good/
 
+# etc.
+/private_bin
+
 

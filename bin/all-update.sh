@@ -16,7 +16,7 @@ if [ "${os}" = mac ]; then
   sudo tlmgr update --self --all # TeX Live
   # alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" # Intel
 fi
-brew doctor; brew update && brew upgrade && brew cleanup
+brew doctor; brew update && brew upgrade && brew upgrade --cask && brew cleanup
 
 # asdf
 asdf plugin update --all
