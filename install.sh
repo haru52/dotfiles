@@ -38,12 +38,29 @@ if [[ "${os}" = linux ]]; then
 fi
 
 # Custom commands
-bin_path=${repo_root_path}/bin
 mkdir -p ~/bin
 
-ln -sfv "${bin_path}"/all-update.sh ~/bin/all-update
-ln -sfv "${bin_path}"/clean-branch.sh ~/bin/clean-branch
-ln -sfv "${bin_path}"/rm-merged-worktrees.sh ~/bin/rm-merged-worktrees
+# Install scripts from bin directory (excluding linux subdirectory)
+bin_path=${repo_root_path}/bin
+if [[ -d "${bin_path}" ]]; then
+  for script in "${bin_path}"/*.sh; do
+    if [[ -f "${script}" ]]; then
+      script_name=$(basename "${script}" .sh)
+      ln -sfv "${script}" ~/bin/"${script_name}"
+    fi
+  done
+fi
+
+# Install scripts from private_bin directory
+private_bin_path=${repo_root_path}/private_bin
+if [[ -d "${private_bin_path}" ]]; then
+  for script in "${private_bin_path}"/*.sh; do
+    if [[ -f "${script}" ]]; then
+      script_name=$(basename "${script}" .sh)
+      ln -sfv "${script}" ~/bin/"${script_name}"
+    fi
+  done
+fi
 
 if [[ "${os}" = linux ]]; then
   ln -sfv "${bin_path}"/linux/apt-update.sh ~/bin/apt-update
