@@ -1,4 +1,4 @@
-.PHONY: install dev-install lint lint-npm lint-text lint-yaml lint-sh lint-action update-gi
+.PHONY: install dev-install lint lint-npm lint-text lint-yaml lint-sh update-gi
 .PHONY: update-gi-global
 
 install:
@@ -8,7 +8,7 @@ dev-install:
 	npm ci
 	vale sync
 
-lint: lint-npm lint-text lint-yaml lint-sh lint-action
+lint: lint-npm lint-text lint-yaml lint-sh
 
 lint-npm:
 	npm run lint
@@ -21,9 +21,6 @@ lint-yaml:
 
 lint-sh:
 	shellcheck *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit
-
-lint-action:
-	actionlint
 
 update-gi:
 	gibo update

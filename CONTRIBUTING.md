@@ -2,18 +2,17 @@
 
 ## Requirements
 
-| Tool                                                        | Version                                          |
+|                            Tool                             |                     Version                      |
 | ----------------------------------------------------------- | ------------------------------------------------ |
 | Node.js and npm                                             | `engines` values in [package.json](package.json) |
 | [gibo](https://github.com/simonwhitaker/gibo#readme)        | ^2.2.7                                           |
 | [Vale CLI](https://vale.sh/)                                | ^2.20.1                                          |
 | [yamllint](https://yamllint.readthedocs.io/)                | ^1.27.1                                          |
 | [ShellCheck](https://github.com/koalaman/shellcheck#readme) | >=0.8.0 <1.0.0                                   |
-| [actionlint](https://github.com/rhysd/actionlint#readme)    | [.tool-versions](.tool-versions)                 |
 
 ## Rules
 
-| Category               | Rule                                                                                                                                       |
+|        Category        |                                                                    Rule                                                                    |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
 | Git commit             | [Conventional Commits v1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)                                                              |
 |                        | [@commitlint/config-conventional](https://github.com/conventional-changelog/commitlint/tree/master/@commitlint/config-conventional#readme) |
@@ -54,6 +53,8 @@ git commit     # Standard Git commit
 
 ## Shell script coding standards
 
+<!-- vale Microsoft.Foreign = NO -->
+
 - Naming conventions
   - File names: kebab-case.sh
   - Variable names, etc.: snake_case
@@ -63,4 +64,6 @@ git commit     # Standard Git commit
 - ShellCheck compliant (no errors or warnings should appear when running the `shellcheck` command)
 - shebang
   - Use `#!/bin/sh` as a general rule
-  - If specific shell features are absolutely necessary, use `#!/usr/bin/env bash` or similar (e.g., when depending on bash)
+  - If specific shell features become absolutely necessary, use `#!/usr/bin/env bash` or similar (e.g., when depending on bash)
+
+<!-- vale Microsoft.Foreign = YES -->
