@@ -6,6 +6,7 @@ haru
 MIT
 npm
 repo
+snake_case
 UNIX
 WSL
 yamllint

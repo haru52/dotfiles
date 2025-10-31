@@ -51,3 +51,16 @@ npm run cm     # Alias for `npm run commit`
 # or
 git commit     # Standard Git commit
 ```
+
+## Shell script coding standards
+
+- Naming conventions
+  - File names: kebab-case.sh
+  - Variable names, etc.: snake_case
+- Language for comments, etc.: English
+- Max characters per line (half-width): 100
+- Indentation: 2 spaces
+- ShellCheck compliant (no errors or warnings should appear when running the `shellcheck` command)
+- shebang
+  - Use `#!/bin/sh` as a general rule
+  - If specific shell features are absolutely necessary, use `#!/usr/bin/env bash` or similar (e.g., when depending on bash)
