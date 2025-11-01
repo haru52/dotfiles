@@ -97,10 +97,7 @@ esac
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
-# Aliases
-
-# https://github.com/oraios/serena?tab=readme-ov-file#claude-code
-alias claude-serena="claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project '\$(pwd)'"
+# Alias functions
 
 # https://formulae.brew.sh/cask/claude-code
 claude() {
@@ -109,4 +106,11 @@ claude() {
   else
     command claude "$@"
   fi
+}
+
+# https://github.com/oraios/serena?tab=readme-ov-file#claude-code
+claude-serena() {
+  local current_dir
+  current_dir=$(pwd)
+  claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project "${current_dir}"
 }
