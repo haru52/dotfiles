@@ -96,3 +96,17 @@ esac
 ## uv
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
+
+# Aliases
+
+# https://github.com/oraios/serena?tab=readme-ov-file#claude-code
+alias claude-serena="claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project '\$(pwd)'"
+
+# https://formulae.brew.sh/cask/claude-code
+claude() {
+  if [[ "$1" = "update" ]]; then
+    brew upgrade --cask claude-code
+  else
+    command claude "$@"
+  fi
+}
