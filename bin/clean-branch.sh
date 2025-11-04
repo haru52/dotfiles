@@ -30,7 +30,7 @@ fi
 echo "Using default branch: ${default_branch}"
 
 # Protected branches to exclude
-protected_branches="main master develop sandbox"
+protected_branches="main master develop"
 
 # Fetch latest remote changes
 echo "Fetching latest remote changes..."
@@ -50,6 +50,16 @@ for branch in ${all_branches}; do
       break
     fi
   done
+
+  # Also skip branches starting with 'sandbox'
+  case "${branch}" in
+    sandbox*)
+      skip=true
+      ;;
+    *)
+      # Not a sandbox branch, continue with normal processing
+      ;;
+  esac
 
   if [ "${skip}" = true ]; then
     continue
