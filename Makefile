@@ -20,7 +20,7 @@ lint-yaml:
 	yamllint --strict .
 
 lint-sh:
-	shellcheck *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit
+	shellcheck --enable=all --severity=style *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit
 
 update-gi:
 	gibo update
