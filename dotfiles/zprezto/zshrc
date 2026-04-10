@@ -99,16 +99,6 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 # Alias functions
 
-# https://formulae.brew.sh/cask/claude-code
-# claude() {
-#   if [[ "$1" = "update" ]]; then
-#     brew update
-#     brew upgrade --cask claude-code
-#   else
-#     command claude "$@"
-#   fi
-# }
-
 # https://github.com/oraios/serena?tab=readme-ov-file#claude-code
 claude-serena() {
   local current_dir
