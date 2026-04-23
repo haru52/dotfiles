@@ -5,13 +5,12 @@
 .env
 
 # Claude Code
-.claude/settings.local.json
-
-# Serena
-.serena/
+**/.claude/*.local.*
+CLAUDE.local.md
 
 # Memo
 .memo.local.md
 /.memo/
 
-
+# Serena
+**/.serena/

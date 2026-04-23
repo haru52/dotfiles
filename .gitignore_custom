@@ -9,12 +9,8 @@
 /.github/styles/write-good/
 
 # Claude Code
-.claude/settings.local.json
-
-# Serena
-.serena/
+**/.claude/*.local.*
+CLAUDE.local.md
 
 # etc.
 /private_bin
-
-
