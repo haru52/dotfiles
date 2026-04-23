@@ -31,3 +31,5 @@ update-gi-global:
 	gibo update
 	cat .gitignore_global_custom >| dotfiles/.gitignore_global
 	gibo dump macOS Linux Windows VisualStudioCode JetBrains Vim >> dotfiles/.gitignore_global
+	cat .gitignore_global_personal_custom >| dotfiles/.gitignore_global_personal
+	gibo dump macOS Linux Windows VisualStudioCode JetBrains Vim >> dotfiles/.gitignore_global_personal

@@ -1,0 +1,14 @@
+### Custom
+
+# direnv
+.envrc
+.env
+
+# Claude Code
+.claude/settings.local.json
+
+# Memo
+.memo.local.md
+/.memo/
+
+

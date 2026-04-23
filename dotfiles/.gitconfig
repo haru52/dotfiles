@@ -4,7 +4,7 @@
 	signingkey = 47EBF5C0762E679D
 [core]
 	editor = vim -c \"set fenc=utf-8\"
-	excludesfile = /Users/haru/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [alias]
 	co = checkout
 	br = branch
@@ -26,3 +26,5 @@
 	ui = true
 [init]
 	defaultBranch = main
+[includeIf "gitdir:~/workspace/haru52/"]
+	path = ~/.gitconfig_personal
