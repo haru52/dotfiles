@@ -87,11 +87,8 @@ if [ "$os" = "linux" ]; then
 fi
 
 # asdf
-case $os in
-  mac) . /opt/homebrew/opt/asdf/libexec/asdf.sh ;; # Apple silicon
-  # mac) . /usr/local/opt/asdf/libexec/asdf.sh ;; # Intel
-  linux) . /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh ;;
-esac
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 ## uv
 eval "$(uv generate-shell-completion zsh)"
