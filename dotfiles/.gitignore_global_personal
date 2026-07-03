@@ -5,7 +5,7 @@
 .env
 
 # Claude Code
-**/.claude/*.local.*
+.claude/*.local.*
 CLAUDE.local.md
 
 # Memo
