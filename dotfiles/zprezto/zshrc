@@ -102,3 +102,5 @@ claude-serena() {
   current_dir=$(pwd)
   claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project "${current_dir}"
 }
+
+alias claude-remove-serena="claude mcp remove serena"
