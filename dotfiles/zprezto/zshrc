@@ -96,11 +96,17 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 # Alias functions
 
-# https://github.com/oraios/serena?tab=readme-ov-file#claude-code
-claude-serena() {
+# Claude Code and Serena MCP
+# https://oraios.github.io/serena/02-usage/030_clients.html#claude-code
+
+alias claude-serena='claude --system-prompt="$(serena prompts print-cc-system-prompt-override)"'
+
+alias claude-add-serena-global="claude mcp add --scope user serena -- serena start-mcp-server --context claude-code --project-from-cwd"
+
+claude-add-serena() {
   local current_dir
   current_dir=$(pwd)
-  claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context ide-assistant --project "${current_dir}"
+  claude mcp add serena -- serena start-mcp-server --context claude-code --project "${current_dir}"
 }
 
-alias claude-remove-serena="claude mcp remove serena"
+alias claude-rm-serena="claude mcp remove serena"
