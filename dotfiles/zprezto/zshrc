@@ -110,3 +110,5 @@ claude-add-serena() {
 }
 
 alias claude-rm-serena="claude mcp remove serena"
+
+alias serena-update="uv tool upgrade serena-agent"
