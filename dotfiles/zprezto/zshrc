@@ -94,16 +94,17 @@ export PATH="$ASDF_DATA_DIR/shims:$PATH"
 eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
-# Alias functions
+# Aliases
 
-# Claude Code and Serena MCP
+# Claude Code and MCP servers
+
+# Serena MCP
 # https://oraios.github.io/serena/02-usage/030_clients.html#claude-code
+alias claudes='claude --system-prompt="$(serena prompts print-cc-system-prompt-override)"'
 
-alias claude-serena='claude --system-prompt="$(serena prompts print-cc-system-prompt-override)"'
+alias claude-serena-global="claude mcp add --scope user serena -- serena start-mcp-server --context claude-code --project-from-cwd"
 
-alias claude-add-serena-global="claude mcp add --scope user serena -- serena start-mcp-server --context claude-code --project-from-cwd"
-
-claude-add-serena() {
+claude-serena() {
   local current_dir
   current_dir=$(pwd)
   claude mcp add serena -- serena start-mcp-server --context claude-code --project "${current_dir}"
@@ -112,3 +113,23 @@ claude-add-serena() {
 alias claude-rm-serena="claude mcp remove serena"
 
 alias serena-update="uv tool upgrade serena-agent"
+
+# GitHub MCP
+# https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-claude.md
+claude-github() {
+  export GITHUB_PAT="$(grep '^GITHUB_PAT=' .env | cut -d '=' -f2-)"
+  claude mcp add-json github '{"type":"http","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer '"$GITHUB_PAT"'"}}'
+}
+
+claude-github-global() {
+  export GITHUB_PAT="$(grep '^GITHUB_PAT=' .env | cut -d '=' -f2-)"
+  claude mcp add-json github '{"type":"http","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer '"$GITHUB_PAT"'"}}' --scope user
+}
+
+# ClickUp MCP
+# https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server-1#claude
+alias claude-clickup="claude mcp add --transport http clickup https://mcp.clickup.com/mcp"
+
+# Notion MCP
+# https://developers.notion.com/guides/mcp/get-started-with-mcp#claude-code
+alias claude-notion="claude mcp add --transport http notion https://mcp.notion.com/mcp"
