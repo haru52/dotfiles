@@ -68,6 +68,9 @@ if [ "$os" = "mac" ]; then
   # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
   # export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+  # curl
+  export PATH=/opt/homebrew/opt/curl/bin:$PATH
 fi
 
 # Linux
