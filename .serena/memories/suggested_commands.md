@@ -1,7 +1,8 @@
 # Suggested Commands
 
 ## Install / setup
-- `make` — alias for `make install` → runs `./install.sh` to symlink dotfiles.
+- `make` — alias for `make install` → runs `./install.sh` (symlinks dotfiles and `bin/`, copies
+  the Prezto runcoms). Re-run after editing `dotfiles/zprezto/*` or `dotfiles/etc/alias.zsh`.
 - `make dev-install` — `npm ci` + `vale sync`; run once before linting.
 
 ## Lint (run before commit / task completion)
@@ -12,6 +13,11 @@
 - `make lint-yaml` — `yamllint --strict .`.
 - `make lint-sh` — `shellcheck --enable=all --severity=style *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit`.
   Match those flags if running shellcheck manually.
+  - GOTCHA: Make runs this with `/bin/sh` (no globstar), so `bin/**/*.sh` == `bin/*/*.sh` and
+    only matches `bin/linux/apt-update.sh`. Top-level `bin/*.sh` are NOT checked. Run
+    `shellcheck --enable=all --severity=style bin/*.sh` manually after editing `bin/`.
+- Zsh files (no linter): `zsh -n dotfiles/zprezto/zprofile` (likewise `zshrc`, `zpreztorc`,
+  `dotfiles/etc/alias.zsh`).
 
 ## Format
 - `npm run format` — runs `format:md` (markdownlint --fix) and `format:prettier` (prettier --write).
@@ -29,6 +35,8 @@
 - None. `npm test` intentionally exits 1.
 
 ## System (Darwin / macOS-specific notes)
-- Default shell: zsh. Standard BSD userland (`ls`, `find`, `sed`, `grep` are BSD variants, not GNU).
-  Watch for BSD flag differences; use `gsed` / `ggrep` from coreutils/gnu-sed if GNU behavior is required.
+- Default shell: zsh with Prezto. Standard BSD userland (`ls`, `find`, `sed`, `grep` are BSD
+  variants, not GNU). Watch for BSD flag differences (e.g. `sed -i ''`); use `gsed` / `ggrep`
+  if GNU behavior is required.
+- Prezto enables `noclobber`: in interactive zsh, overwrite an existing file with `>|`, not `>`.
 - Git, gh CLI, standard `ls`/`cd`/`grep`/`find` all behave normally.
