@@ -111,8 +111,11 @@ if [ "$os" = "linux" ]; then
   # Path settings
 
   # VS Code on Windows (needed because wsl.conf sets appendWindowsPath = false)
-  win_user_path=$(wslpath "$(wslvar USERPROFILE)")
-  export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
+  # Only on WSL: wslpath and wslvar do not exist on native Linux
+  if (( $+commands[wslpath] && $+commands[wslvar] )); then
+    win_user_path=$(wslpath "$(wslvar USERPROFILE)")
+    export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
+  fi
 
   # Homebrew
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
