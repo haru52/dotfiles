@@ -30,13 +30,6 @@ eval "$(uvx --generate-shell-completion zsh)"
 # Restart the login shell
 alias refresh='exec "$SHELL" -l'
 
-# Suppress brew doctor warning caused by asdf python
-# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
-# case $os in
-  # Intel
-  # mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
-# esac
-
 # Claude Code and MCP servers
 
 # Serena MCP
