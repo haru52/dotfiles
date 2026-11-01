@@ -37,9 +37,12 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'spectrum' \
   'utility' \
-  'completion' \
-  'history-substring-search' \
+  'ssh' \
   'git' \
+  'completion' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'autosuggestions' \
   'prompt'
 
 #
