@@ -25,23 +25,10 @@ source <(fzf --zsh)
 # direnv
 eval "$(direnv hook zsh)"
 
-# For `$ rails app:update`
-export THOR_MERGE="code -d $1 $2"
-
 # GPG
 export GPG_TTY=$(tty)
 
 # OS specific settings
-
-# Mac
-if [ "$os" = "mac" ]; then
-  # PostgreSQL
-  export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
-  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
-
-  # OpenJDK
-  # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
-fi
 
 # Linux
 if [ "$os" = "linux" ]; then
@@ -55,6 +42,13 @@ eval "$(uv generate-shell-completion zsh)"
 eval "$(uvx --generate-shell-completion zsh)"
 
 # Aliases
+
+# Suppress brew doctor warning caused by asdf python
+# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+# case $os in
+  # Intel
+  # mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
+# esac
 
 # Claude Code and MCP servers
 

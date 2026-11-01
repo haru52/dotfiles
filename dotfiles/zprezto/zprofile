@@ -96,9 +96,12 @@ if [ "$os" = "mac" ]; then
 
   # PostgreSQL
   export PATH="/opt/homebrew/opt/postgresql@15/bin:${PATH}"
+  export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
   # OpenJDK
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
   # export PATH="/usr/local/opt/openssl/bin:$PATH"
 
@@ -129,9 +132,11 @@ export PATH="$ASDF_DATA_DIR/shims:$PATH"
 export PATH="$PATH:/Users/haru/.docker/bin"
 # End of Docker Desktop section.
 
-# Suppress brew doctor warning caused by asdf python
-# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
-# case $os in
-  # Intel
-  # mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
-# esac
+#
+# Environment variables
+#
+
+# For `$ rails app:update`
+# Do not use $1/$2 here: this file may be sourced with script arguments
+# (e.g. via zshenv for non-login shells), which would leak into the value.
+export THOR_MERGE='code -d'
