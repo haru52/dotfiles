@@ -130,7 +130,7 @@ export ASDF_DATA_DIR="$HOME/.asdf"
 export PATH="$ASDF_DATA_DIR/shims:$PATH"
 
 # The following lines were added by Docker Desktop to add commands to your PATH.
-export PATH="$PATH:/Users/haru/.docker/bin"
+export PATH="${PATH}:${HOME}/.docker/bin"
 # End of Docker Desktop section.
 
 #
