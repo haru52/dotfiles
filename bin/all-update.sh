@@ -12,7 +12,8 @@ fi
 
 # Homebrew
 if [ "${os}" = mac ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+  brew_env=$(/opt/homebrew/bin/brew shellenv) # Apple silicon
+  eval "${brew_env}"
   sudo tlmgr update --self --all # TeX Live
   # alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" # Intel
 fi
