@@ -80,6 +80,55 @@ fi
 # PATH
 #
 
+# Get the current OS name (zshrc is sourced after this file, so $os is not set yet)
+case $(uname) in
+  Darwin) os=mac ;;
+  Linux) os=linux ;;
+esac
+
+export PATH=${HOME}/bin:${PATH}
+export PATH="${HOME}/.local/bin:${PATH}"
+
+# Mac
+if [ "$os" = "mac" ]; then
+  # Homebrew
+  eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+
+  # PostgreSQL
+  export PATH="/opt/homebrew/opt/postgresql@15/bin:${PATH}"
+
+  # OpenJDK
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+  # export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+  # curl
+  export PATH=/opt/homebrew/opt/curl/bin:$PATH
+fi
+
+# Linux
+if [ "$os" = "linux" ]; then
+  # Path settings
+
+  # VS Code on Windows (needed because wsl.conf sets appendWindowsPath = false)
+  win_user_path=$(wslpath "$(wslvar USERPROFILE)")
+  export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
+
+  # Homebrew
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+# asdf
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
 # The following lines were added by Docker Desktop to add commands to your PATH.
 export PATH="$PATH:/Users/haru/.docker/bin"
 # End of Docker Desktop section.
+
+# Suppress brew doctor warning caused by asdf python
+# Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
+# case $os in
+  # Intel
+  # mac) alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin brew" ;;
+# esac
