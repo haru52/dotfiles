@@ -12,13 +12,6 @@ fi
 
 # Customize to your needs...
 
-# Get the current OS name
-case $(uname) in
-  Darwin) os=mac ;;
-  Linux) os=linux ;;
-  *) exit 1 ;;
-esac
-
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
@@ -27,15 +20,6 @@ eval "$(direnv hook zsh)"
 
 # GPG
 export GPG_TTY=$(tty)
-
-# OS specific settings
-
-# Linux
-if [ "$os" = "linux" ]; then
-  # SSH
-  /usr/bin/keychain -q --nogui "$HOME"/.ssh/id_ed25519
-  source "$HOME"/.keychain/"$HOST"-sh
-fi
 
 ## uv
 eval "$(uv generate-shell-completion zsh)"
