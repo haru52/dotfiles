@@ -19,20 +19,8 @@ case $(uname) in
   *) exit 1 ;;
 esac
 
-# Incremental history search with peco
-# Refs: https://qiita.com/shepabashi/items/f2bc2be37a31df49bca5
-function peco-history-selection() {
-  case $os in
-    mac) BUFFER=$(history -n 1 | tail -r | awk '!a[$0]++' | peco) ;;
-    linux) BUFFER=$(history -n 1 | tac | awk '!a[$0]++' | peco) ;;
-  esac
-
-  CURSOR=$#BUFFER
-  zle reset-prompt
-}
-
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # Suppress brew doctor warning caused by asdf python
 # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
