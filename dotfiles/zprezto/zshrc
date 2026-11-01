@@ -27,6 +27,9 @@ eval "$(uvx --generate-shell-completion zsh)"
 
 # Aliases
 
+# Restart the login shell
+alias refresh='exec "$SHELL" -l'
+
 # Suppress brew doctor warning caused by asdf python
 # Refs: https://zenn.dev/ryuu/scraps/fddefc2ca60f88
 # case $os in
