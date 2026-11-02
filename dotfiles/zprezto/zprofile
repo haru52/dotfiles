@@ -137,5 +137,5 @@ export PATH="${PATH}:${HOME}/.docker/bin"
 
 # For `$ rails app:update`
 # Do not use $1/$2 here: this file may be sourced with script arguments
-# (e.g. via zshenv for non-login shells), which would leak into the value.
+# (e.g., via zshenv for non-login shells), which would leak into the value.
 export THOR_MERGE='code -d'

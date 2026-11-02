@@ -7,7 +7,7 @@ which symlinks config files from `dotfiles/` into `~`, copies the Prezto runcoms
 `~/.zprezto`, and symlinks scripts from `bin/` (and optional `private_bin/`) into `~/bin`.
 
 ## Tech stack
-- **Primary language**: Shell (POSIX `sh` preferred; `bash` only when necessary — e.g. `install.sh`).
+- **Primary language**: Shell (POSIX `sh` preferred; `bash` only when necessary — e.g., `install.sh`).
 - **Shell config**: zsh + Prezto (`dotfiles/zprezto/`), asdf (shims on `PATH`), Homebrew on both
   macOS and Linux. See the `zsh_config` memory.
 - **Tooling layer**: Node.js (`^22.20.0`) + npm (`^11.6.1`) for lint orchestration only — no runtime code.

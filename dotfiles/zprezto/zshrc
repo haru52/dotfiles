@@ -53,7 +53,7 @@ alias serena-update="uv tool upgrade serena-agent"
 # GitHub MCP
 # https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-claude.md
 # Reads GITHUB_PAT from ./.env and fails if it is missing or empty.
-# Extra arguments are passed through to `claude mcp add-json` (e.g. --scope user).
+# Extra arguments are passed through to `claude mcp add-json` (e.g., --scope user).
 claude-github() {
   local line pat config
   if ! line=$(grep '^GITHUB_PAT=' .env) || [[ -z "${line#GITHUB_PAT=}" ]]; then

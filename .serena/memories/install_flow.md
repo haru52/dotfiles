@@ -17,7 +17,7 @@ Two-layer install system:
 
 ## 2. `bin/` → `~/bin`
 - `bin/*.sh` are symlinked into `~/bin` WITHOUT the `.sh` suffix
-  (e.g. `bin/clean-branch.sh` → `~/bin/clean-branch`). New top-level scripts are picked up
+  (e.g., `bin/clean-branch.sh` → `~/bin/clean-branch`). New top-level scripts are picked up
   automatically.
 - `bin/linux/` is NOT globbed: only `bin/linux/apt-update.sh` is linked, via a hardcoded line
   guarded by `os = linux`. A new Linux-only script needs its own line in `install.sh`.
@@ -27,7 +27,7 @@ Two-layer install system:
 ## OS detection
 - `install.sh` calls `./get-os.sh`. Returns `mac` or `linux`; exits 1 on anything else.
 - Scripts run from `~/bin` and the copied zsh runcoms can't locate `get-os.sh`, so they inline
-  `case $(uname) in Darwin) os=mac ;; Linux) os=linux ;; esac` (e.g. `bin/all-update.sh`,
+  `case $(uname) in Darwin) os=mac ;; Linux) os=linux ;; esac` (e.g., `bin/all-update.sh`,
   `zprofile`). Keep that mapping identical everywhere; don't add other `uname` variants.
 
 ## Current `bin/` contents

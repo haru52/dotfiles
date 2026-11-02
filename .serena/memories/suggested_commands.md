@@ -36,7 +36,7 @@
 
 ## System (Darwin / macOS-specific notes)
 - Default shell: zsh with Prezto. Standard BSD userland (`ls`, `find`, `sed`, `grep` are BSD
-  variants, not GNU). Watch for BSD flag differences (e.g. `sed -i ''`); use `gsed` / `ggrep`
+  variants, not GNU). Watch for BSD flag differences (e.g., `sed -i ''`); use `gsed` / `ggrep`
   if GNU behavior is required.
 - Prezto enables `noclobber`: in interactive zsh, overwrite an existing file with `>|`, not `>`.
 - Git, gh CLI, standard `ls`/`cd`/`grep`/`find` all behave normally.

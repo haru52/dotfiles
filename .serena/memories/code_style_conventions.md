@@ -7,7 +7,7 @@
 - Max line length: 100 half-width chars.
 - Indentation: 2 spaces.
 - Must pass `shellcheck --enable=all --severity=style` with no errors or warnings
-  (e.g. SC2312: capture `$(cmd)` into a variable before `eval "${var}"`).
+  (e.g., SC2312: capture `$(cmd)` into a variable before `eval "${var}"`).
 - Default shebang: `#!/bin/sh`. Use `#!/usr/bin/env bash` only when bash features are actually
   required (`install.sh` is a legitimate bash example; `get-os.sh` uses `/bin/sh`).
 - OS detection: `get-os.sh` from repo-local code; inline the identical

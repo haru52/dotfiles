@@ -8,7 +8,7 @@ They are copied into `~/.zprezto` by `install.sh` (see `install_flow`), so chang
 - Keep the upstream Prezto template structure (Sorin Ionescu header). Personal additions go
   below the `# Custom` marker in `zprofile` and `# Customize to your needs...` in `zshrc`.
 - `alias.zsh` is a fork of upstream Prezto `modules/git/alias.zsh`; sync it with upstream
-  manually (e.g. commit `54d42a6`).
+  manually (e.g., commit `54d42a6`).
 
 ## zprofile vs zshrc
 - `zprofile`: environment variables and `PATH` (Homebrew, PostgreSQL, OpenJDK, curl, asdf shims,
