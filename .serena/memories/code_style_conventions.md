@@ -24,7 +24,7 @@
   `.claude/` are excluded from both.
 - `yamllint --strict` for YAML.
 - `vale` for top-level prose Markdown (`README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `.github/`).
-  `CLAUDE.md` is not Vale-linted.
+  `AGENTS.md` is not Vale-linted.
 - `secretlint` scans everything for credential leaks (skipped in CI via `$CI=true`).
 
 ## Git

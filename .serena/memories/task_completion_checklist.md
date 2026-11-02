@@ -18,7 +18,7 @@ When a code-editing task is done, run these before committing / handing off:
    need changes, edit the matching `*_custom` prefix file and run `make update-gi` or
    `make update-gi-global` — never hand-edit the generated file.
 5. **Keep docs in sync**: if the change affects architecture, commands, or conventions, update
-   both `CLAUDE.md` and the matching Serena memory (`install_flow`, `zsh_config`, ...), e.g.,
+   both `AGENTS.md` and the matching Serena memory (`install_flow`, `zsh_config`, ...), e.g.,
    the "Current `bin/` contents" list in `install_flow` when adding a script.
 6. **Commit**: use `npm run commit` (Commitizen) or a plain `git commit` that satisfies
    Conventional Commits — the husky `commit-msg` hook will enforce it.

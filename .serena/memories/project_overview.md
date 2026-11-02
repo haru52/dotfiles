@@ -42,4 +42,5 @@ which symlinks config files from `dotfiles/` into `~`, copies the Prezto runcoms
 - `.gitconfig` includes `.gitconfig_personal` for repos under `~/workspace/haru52/`, which switches
   the global excludes file to `.gitignore_global_personal`. Unlike `.gitignore_global`, it does
   not ignore `.serena/`, so this repo tracks `.serena/project.yml` and these memories.
-- `CLAUDE.md` covers the same ground as these memories; keep both in sync.
+- `AGENTS.md` (imported by `CLAUDE.md`) covers the same ground as these memories; keep both in
+  sync.
