@@ -13,17 +13,19 @@ fi
 # Customize to your needs...
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+# shellcheck disable=SC1090
+source <(fzf --zsh || true)
 
 # direnv
-eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh || true)"
 
 # GPG
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
 ## uv
-eval "$(uv generate-shell-completion zsh)"
-eval "$(uvx --generate-shell-completion zsh)"
+eval "$(uv generate-shell-completion zsh || true)"
+eval "$(uvx --generate-shell-completion zsh || true)"
 
 # Aliases
 

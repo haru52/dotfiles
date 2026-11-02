@@ -85,15 +85,16 @@ fi
 case $(uname) in
   Darwin) os=mac ;;
   Linux) os=linux ;;
+  *) ;;
 esac
 
 export PATH=${HOME}/bin:${PATH}
 export PATH="${HOME}/.local/bin:${PATH}"
 
 # Mac
-if [ "$os" = "mac" ]; then
+if [[ "${os}" = "mac" ]]; then
   # Homebrew
-  eval "$(/opt/homebrew/bin/brew shellenv)" # Apple silicon
+  eval "$(/opt/homebrew/bin/brew shellenv || true)" # Apple silicon
 
   # PostgreSQL
   export PATH="/opt/homebrew/opt/postgresql@15/bin:${PATH}"
@@ -101,30 +102,30 @@ if [ "$os" = "mac" ]; then
   export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
 
   # OpenJDK
-  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  export PATH="/opt/homebrew/opt/openjdk/bin:${PATH}"
 
   # curl
-  export PATH=/opt/homebrew/opt/curl/bin:$PATH
+  export PATH=/opt/homebrew/opt/curl/bin:${PATH}
 fi
 
 # Linux
-if [ "$os" = "linux" ]; then
+if [[ "${os}" = "linux" ]]; then
   # Path settings
 
   # VS Code on Windows (needed because wsl.conf sets appendWindowsPath = false)
   # Only on WSL: wslpath and wslvar do not exist on native Linux
   if (( $+commands[wslpath] && $+commands[wslvar] )); then
-    win_user_path=$(wslpath "$(wslvar USERPROFILE)")
-    export PATH=$PATH:"$win_user_path/AppData/Local/Programs/Microsoft VS Code/bin"
+    win_user_path=$(wslpath "$(wslvar USERPROFILE || true)")
+    export PATH=${PATH}:"${win_user_path}/AppData/Local/Programs/Microsoft VS Code/bin"
   fi
 
   # Homebrew
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv || true)"
 fi
 
 # asdf
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
+export ASDF_DATA_DIR="${HOME}/.asdf"
+export PATH="${ASDF_DATA_DIR}/shims:${PATH}"
 
 # The following lines were added by Docker Desktop to add commands to your PATH.
 export PATH="${PATH}:${HOME}/.docker/bin"
