@@ -32,7 +32,7 @@ There is no test suite; `npm test` intentionally exits 1.
 
 The repo is a two-layer install system:
 
-1. **`dotfiles/`** — files that get symlinked into `$HOME`. `install.sh` iterates `ls -A dotfiles/` and `ln -sfv` each regular file into `~`. Subdirectories under `dotfiles/` are *not* symlinked; they are handled by special cases:
+1. **`dotfiles/`** — files that get symlinked into `$HOME`. `install.sh` exits 1 if `dotfiles/` is missing, then globs `dotfiles/*` (with `dotglob`/`nullglob`) and `ln -sfv` each regular file into `~`. Subdirectories under `dotfiles/` are *not* symlinked; they are handled by special cases:
    - `dotfiles/zprezto/{zpreztorc,zprofile,zshrc}` are **copied** (not symlinked) into `~/.zprezto/runcoms`, where Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point. Edits take effect only after `make install` and a new shell.
    - `dotfiles/etc/alias.zsh` is copied over `~/.zprezto/modules/git/alias.zsh`. It is a fork of the upstream Prezto git module's aliases.
    - Both copies overwrite tracked files in the Prezto git checkout, so `~/.zprezto` always shows them as modified, and upstream Prezto changes to those files have to be merged into this repo by hand.

@@ -3,7 +3,7 @@
 Two-layer install system:
 
 ## 1. `dotfiles/` → `$HOME`
-- `install.sh` iterates `ls -A dotfiles/` and `ln -sfv` each regular file into `~`.
+- `install.sh` exits 1 if `dotfiles/` is missing, then globs `dotfiles/*` (with `dotglob`/`nullglob`) and `ln -sfv` each regular file into `~`.
 - Subdirectories under `dotfiles/` are NOT symlinked; they are handled by special cases:
   - `dotfiles/zprezto/*` (`zpreztorc`, `zprofile`, `zshrc`) → COPIED (not symlinked) into
     `~/.zprezto/runcoms`. Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point into that

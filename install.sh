@@ -9,16 +9,20 @@ dotfiles_path=${repo_root_path}/dotfiles
 
 os=$("${repo_root_path}"/get-os.sh)
 
-# https://www.shellcheck.net/wiki/SC2207
-ls_dotfiles=()
-while IFS='' read -r line; do ls_dotfiles+=("${line}"); done < <(ls -A "${dotfiles_path}")
+if [[ ! -d "${dotfiles_path}" ]]; then
+  echo "Error: ${dotfiles_path} is not a directory" >&2
+  exit 1
+fi
 
-for file_name in "${ls_dotfiles[@]}"; do
-  file_path=${dotfiles_path}/${file_name}
+# Symlink every regular file in dotfiles/ (dotfiles included) into ~.
+# dotglob: match names starting with '.'; nullglob: an empty directory yields no iterations.
+shopt -s dotglob nullglob
+for file_path in "${dotfiles_path}"/*; do
   if [[ -f "${file_path}" ]]; then
     ln -sfv "${file_path}" ~
   fi
 done
+shopt -u dotglob nullglob
 
 # Zsh
 cp -fv "${dotfiles_path}"/zprezto/* ~/.zprezto/runcoms
