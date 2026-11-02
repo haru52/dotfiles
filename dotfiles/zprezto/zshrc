@@ -52,14 +52,22 @@ alias serena-update="uv tool upgrade serena-agent"
 
 # GitHub MCP
 # https://github.com/github/github-mcp-server/blob/main/docs/installation-guides/install-claude.md
+# Reads GITHUB_PAT from ./.env and fails if it is missing or empty.
+# Extra arguments are passed through to `claude mcp add-json` (e.g. --scope user).
 claude-github() {
-  export GITHUB_PAT="$(grep '^GITHUB_PAT=' .env | cut -d '=' -f2-)"
-  claude mcp add-json github '{"type":"http","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer '"$GITHUB_PAT"'"}}'
+  local line pat config
+  if ! line=$(grep '^GITHUB_PAT=' .env) || [[ -z "${line#GITHUB_PAT=}" ]]; then
+    echo 'Error: GITHUB_PAT is not set in .env' >&2
+    return 1
+  fi
+  pat=${line#GITHUB_PAT=}
+  config=$(printf '{"type":"http","url":"%s","headers":{"Authorization":"Bearer %s"}}' \
+    'https://api.githubcopilot.com/mcp' "${pat}")
+  claude mcp add-json github "${config}" "$@"
 }
 
 claude-github-global() {
-  export GITHUB_PAT="$(grep '^GITHUB_PAT=' .env | cut -d '=' -f2-)"
-  claude mcp add-json github '{"type":"http","url":"https://api.githubcopilot.com/mcp","headers":{"Authorization":"Bearer '"$GITHUB_PAT"'"}}' --scope user
+  claude-github --scope user
 }
 
 # ClickUp MCP
