@@ -1,6 +1,7 @@
 # Zsh configuration (Prezto runcoms)
 
-Files: `dotfiles/zprezto/{zpreztorc,zprofile,zshrc}` and `dotfiles/etc/alias.zsh`.
+Files: `dotfiles/zprezto/runcoms/{zpreztorc,zprofile,zshrc}` and
+`dotfiles/zprezto/modules/git/alias.zsh` (the directory mirrors `~/.zprezto`).
 They are copied into `~/.zprezto` by `install.sh` (see `install_flow`), so changes need
 `make install` + a new shell to take effect. No linter covers them; use `zsh -n <file>`.
 

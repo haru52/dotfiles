@@ -24,7 +24,7 @@ haru's personal dotfiles. Targets macOS (Apple silicon — Homebrew paths are ha
 Linter coverage gaps to cover by hand:
 
 - **`make lint-sh` does not check the top-level `bin/*.sh` scripts.** Make runs the recipe with `/bin/sh`, where `bin/**/*.sh` behaves like `bin/*/*.sh` and matches only `bin/linux/apt-update.sh`. After editing anything in `bin/`, also run `shellcheck --enable=all --severity=style bin/*.sh`. The lint-staged pre-commit `shellcheck` uses default flags, so it is not a substitute.
-- The zsh files (`dotfiles/zprezto/*`, `dotfiles/etc/alias.zsh`) are not covered by any linter; syntax-check them with `zsh -n <file>`.
+- The zsh files under `dotfiles/zprezto/` (`runcoms/*`, `modules/git/alias.zsh`) are not covered by any linter; syntax-check them with `zsh -n <file>`.
 
 There is no test suite; `npm test` intentionally exits 1.
 
@@ -33,8 +33,8 @@ There is no test suite; `npm test` intentionally exits 1.
 The repo is a two-layer install system:
 
 1. **`dotfiles/`** — files that get symlinked into `$HOME`. `install.sh` exits 1 if `dotfiles/` is missing, then globs `dotfiles/*` (with `dotglob`/`nullglob`) and `ln -sfv` each regular file into `~`. Subdirectories under `dotfiles/` are *not* symlinked; they are handled by special cases:
-   - `dotfiles/zprezto/{zpreztorc,zprofile,zshrc}` are **copied** (not symlinked) into `~/.zprezto/runcoms`, where Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point. Edits take effect only after `make install` and a new shell.
-   - `dotfiles/etc/alias.zsh` is copied over `~/.zprezto/modules/git/alias.zsh`. It is a fork of the upstream Prezto git module's aliases.
+   - `dotfiles/zprezto/` mirrors the layout of `~/.zprezto`. `dotfiles/zprezto/runcoms/{zpreztorc,zprofile,zshrc}` are **copied** (not symlinked) into `~/.zprezto/runcoms`, where Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point. Edits take effect only after `make install` and a new shell.
+   - `dotfiles/zprezto/modules/git/alias.zsh` is copied over `~/.zprezto/modules/git/alias.zsh`. It is a fork of the upstream Prezto git module's aliases.
    - Both copies overwrite tracked files in the Prezto git checkout, so `~/.zprezto` always shows them as modified, and upstream Prezto changes to those files have to be merged into this repo by hand.
    - `dotfiles/wsl/{wsl.conf,resolv_template.conf}` is symlinked into `/etc/` only when `get-os.sh` reports `linux` (this branch currently has no WSL-vs-native-Linux guard — see the TODO in `install.sh`).
    - `.gitconfig` uses `includeIf "gitdir:~/workspace/haru52/"` to load `.gitconfig_personal`, which switches the global excludes file to `~/.gitignore_global_personal`.

@@ -5,11 +5,12 @@ Two-layer install system:
 ## 1. `dotfiles/` → `$HOME`
 - `install.sh` exits 1 if `dotfiles/` is missing, then globs `dotfiles/*` (with `dotglob`/`nullglob`) and `ln -sfv` each regular file into `~`.
 - Subdirectories under `dotfiles/` are NOT symlinked; they are handled by special cases:
-  - `dotfiles/zprezto/*` (`zpreztorc`, `zprofile`, `zshrc`) → COPIED (not symlinked) into
-    `~/.zprezto/runcoms`. Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point into that
-    dir. Edits take effect only after re-running `make install` and starting a new shell.
-  - `dotfiles/etc/alias.zsh` → copied over `~/.zprezto/modules/git/alias.zsh` (a fork of the
-    upstream Prezto git module aliases).
+  - `dotfiles/zprezto/` mirrors the layout of `~/.zprezto`. `dotfiles/zprezto/runcoms/*`
+    (`zpreztorc`, `zprofile`, `zshrc`) → COPIED (not symlinked) into `~/.zprezto/runcoms`.
+    Prezto's own `~/.zshrc`, `~/.zprofile`, etc. symlinks point into that dir. Edits take effect
+    only after re-running `make install` and starting a new shell.
+  - `dotfiles/zprezto/modules/git/alias.zsh` → copied over `~/.zprezto/modules/git/alias.zsh`
+    (a fork of the upstream Prezto git module aliases).
   - Both copies overwrite tracked files of the Prezto git checkout, so `~/.zprezto` always shows
     them as modified; upstream Prezto changes to those files must be merged into this repo by hand.
   - `dotfiles/wsl/{wsl.conf,resolv_template.conf}` → `sudo` symlinked into `/etc/` when
@@ -42,4 +43,5 @@ Two-layer install system:
 - `linux/apt-update.sh` — apt update / upgrade / full-upgrade / autoremove / autoclean.
 
 ## Current `dotfiles/` subdirs
-- `etc/`, `wsl/`, `zprezto/` (all special-cased, see above).
+- `wsl/`, `zprezto/` (both special-cased, see above). `zprezto/` holds `runcoms/` and
+  `modules/git/`, mirroring `~/.zprezto`.

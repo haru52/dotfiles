@@ -25,9 +25,8 @@ done
 shopt -u dotglob nullglob
 
 # Zsh
-cp -fv "${dotfiles_path}"/zprezto/* ~/.zprezto/runcoms
-# TODO: etcというディレクトリ名など色々と適当なのでもう少し整理する
-cp -fv "${dotfiles_path}"/etc/alias.zsh ~/.zprezto/modules/git
+cp -fv "${dotfiles_path}"/zprezto/runcoms/* ~/.zprezto/runcoms
+cp -fv "${dotfiles_path}"/zprezto/modules/git/* ~/.zprezto/modules/git
 
 # OS specific installation
 

@@ -2,7 +2,7 @@
 
 ## Install / setup
 - `make` — alias for `make install` → runs `./install.sh` (symlinks dotfiles and `bin/`, copies
-  the Prezto runcoms). Re-run after editing `dotfiles/zprezto/*` or `dotfiles/etc/alias.zsh`.
+  the Prezto runcoms and `alias.zsh`). Re-run after editing anything under `dotfiles/zprezto/`.
 - `make dev-install` — `npm ci` + `vale sync`; run once before linting.
 
 ## Lint (run before commit / task completion)
@@ -16,8 +16,8 @@
   - GOTCHA: Make runs this with `/bin/sh` (no globstar), so `bin/**/*.sh` == `bin/*/*.sh` and
     only matches `bin/linux/apt-update.sh`. Top-level `bin/*.sh` are NOT checked. Run
     `shellcheck --enable=all --severity=style bin/*.sh` manually after editing `bin/`.
-- Zsh files (no linter): `zsh -n dotfiles/zprezto/zprofile` (likewise `zshrc`, `zpreztorc`,
-  `dotfiles/etc/alias.zsh`).
+- Zsh files (no linter): `zsh -n dotfiles/zprezto/runcoms/zprofile` (likewise `zshrc`,
+  `zpreztorc`, `dotfiles/zprezto/modules/git/alias.zsh`).
 
 ## Format
 - `npm run format` — runs `format:md` (markdownlint --fix) and `format:prettier` (prettier --write).
