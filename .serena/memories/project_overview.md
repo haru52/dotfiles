@@ -38,7 +38,6 @@ which symlinks config files from `dotfiles/` into `~`, copies the Prezto runcoms
 - `install.sh` iterates only regular files in `dotfiles/` top level; subdirs are handled by
   explicit special cases in the script.
 - Known TODO in `install.sh`: the Linux branch assumes WSL2 without checking.
-- `make lint-sh` silently skips top-level `bin/*.sh` (glob gotcha; see `suggested_commands`).
 - `.gitconfig` includes `.gitconfig_personal` for repos under `~/workspace/haru52/`, which switches
   the global excludes file to `.gitignore_global_personal`. Unlike `.gitignore_global`, it does
   not ignore `.serena/`, so this repo tracks `.serena/project.yml` and these memories.

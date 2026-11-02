@@ -11,11 +11,9 @@
   `secretlint` (skipped when `CI=true`), `markdownlint`, `prettier --check`.
 - `make lint-text` — Vale on `README.md CONTRIBUTING.md SECURITY.md .github/*.md .github/ISSUE_TEMPLATE`.
 - `make lint-yaml` — `yamllint --strict .`.
-- `make lint-sh` — `shellcheck --enable=all --severity=style *.sh bin/**/*.sh .husky/commit-msg .husky/pre-commit`.
-  Match those flags if running shellcheck manually.
-  - GOTCHA: Make runs this with `/bin/sh` (no globstar), so `bin/**/*.sh` == `bin/*/*.sh` and
-    only matches `bin/linux/apt-update.sh`. Top-level `bin/*.sh` are NOT checked. Run
-    `shellcheck --enable=all --severity=style bin/*.sh` manually after editing `bin/`.
+- `make lint-sh` — `shellcheck --enable=all --severity=style` on `*.sh`, `bin/*.sh`, `bin/*/*.sh`,
+  `.husky/commit-msg`, `.husky/pre-commit`. Match those flags if running shellcheck manually.
+  The lint-staged pre-commit `shellcheck` uses default flags, so it is not a substitute.
 - Zsh files (no linter): `zsh -n dotfiles/zprezto/runcoms/zprofile` (likewise `zshrc`,
   `zpreztorc`, `dotfiles/zprezto/modules/git/alias.zsh`).
 

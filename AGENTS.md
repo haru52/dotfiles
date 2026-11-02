@@ -28,11 +28,10 @@ haru's personal dotfiles. Targets macOS (Apple silicon — Homebrew paths are ha
 | Regenerate global gitignores shipped in `dotfiles/` | `make update-gi-global`                                                |
 | Conventional-commit helper                          | `npm run commit` (or `npm run cm`)                                     |
 
-`make lint-npm` runs `npm run lint`, which fans out via `run-s --continue-on-error` to `secretlint` (skipped when `CI=true`), `markdownlint`, and `prettier --check`. `make lint-text` runs Vale on `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `.github/` only (not on `AGENTS.md`). `make lint-sh` runs ShellCheck with `--enable=all --severity=style` — match those flags if invoking ShellCheck manually.
+`make lint-npm` runs `npm run lint`, which fans out via `run-s --continue-on-error` to `secretlint` (skipped when `CI=true`), `markdownlint`, and `prettier --check`. `make lint-text` runs Vale on `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, and `.github/` only (not on `AGENTS.md`). `make lint-sh` runs ShellCheck with `--enable=all --severity=style` on the root `*.sh`, `bin/*.sh`, `bin/*/*.sh`, and the husky hooks — match those flags if invoking ShellCheck manually; the lint-staged pre-commit `shellcheck` uses default flags, so it is not a substitute.
 
 Linter coverage gaps to cover by hand:
 
-- **`make lint-sh` does not check the top-level `bin/*.sh` scripts.** Make runs the recipe with `/bin/sh`, where `bin/**/*.sh` behaves like `bin/*/*.sh` and matches only `bin/linux/apt-update.sh`. After editing anything in `bin/`, also run `shellcheck --enable=all --severity=style bin/*.sh`. The lint-staged pre-commit `shellcheck` uses default flags, so it is not a substitute.
 - The zsh files under `dotfiles/zprezto/` (`runcoms/*`, `modules/git/alias.zsh`) are not covered by any linter; syntax-check them with `zsh -n <file>`.
 
 There is no test suite; `npm test` intentionally exits 1.

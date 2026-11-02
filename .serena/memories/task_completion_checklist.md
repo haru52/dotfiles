@@ -6,8 +6,6 @@ When a code-editing task is done, run these before committing / handing off:
    - Equivalent to running `make lint-npm lint-text lint-yaml lint-sh`.
    - If iterating, target the relevant subset:
      - Shell changes → `make lint-sh` (note the exact flags: `shellcheck --enable=all --severity=style`).
-     - Changes under `bin/` → ALSO `shellcheck --enable=all --severity=style bin/*.sh`
-       (`make lint-sh` misses top-level `bin/*.sh`; see `suggested_commands`).
      - Zsh runcom / `alias.zsh` changes → `zsh -n <file>` (no linter covers them).
      - Markdown changes → `make lint-text` + `npm run lint:md`.
      - YAML changes → `make lint-yaml`.
