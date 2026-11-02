@@ -2,6 +2,9 @@
 
 cd "$(dirname "$0")" || exit 1
 
+# Everything is installed under $HOME, so fail early if it is unset or empty
+: "${HOME:?HOME is not set}"
+
 repo_root_path=$(pwd)
 
 # dotfiles
@@ -14,19 +17,19 @@ if [[ ! -d "${dotfiles_path}" ]]; then
   exit 1
 fi
 
-# Symlink every regular file in dotfiles/ (dotfiles included) into ~.
+# Symlink every regular file in dotfiles/ (dotfiles included) into $HOME.
 # dotglob: match names starting with '.'; nullglob: an empty directory yields no iterations.
 shopt -s dotglob nullglob
 for file_path in "${dotfiles_path}"/*; do
   if [[ -f "${file_path}" ]]; then
-    ln -sfv "${file_path}" ~
+    ln -sfv "${file_path}" "${HOME}"
   fi
 done
 shopt -u dotglob nullglob
 
 # Zsh
-cp -fv "${dotfiles_path}"/zprezto/runcoms/* ~/.zprezto/runcoms
-cp -fv "${dotfiles_path}"/zprezto/modules/git/* ~/.zprezto/modules/git
+cp -fv "${dotfiles_path}"/zprezto/runcoms/* "${HOME}/.zprezto/runcoms"
+cp -fv "${dotfiles_path}"/zprezto/modules/git/* "${HOME}/.zprezto/modules/git"
 
 # OS specific installation
 
@@ -41,7 +44,7 @@ if [[ "${os}" = linux ]]; then
 fi
 
 # Custom commands
-mkdir -p ~/bin
+mkdir -p "${HOME}/bin"
 
 # Install scripts from bin directory (excluding linux subdirectory)
 bin_path=${repo_root_path}/bin
@@ -49,7 +52,7 @@ if [[ -d "${bin_path}" ]]; then
   for script in "${bin_path}"/*.sh; do
     if [[ -f "${script}" ]]; then
       script_name=$(basename "${script}" .sh)
-      ln -sfv "${script}" ~/bin/"${script_name}"
+      ln -sfv "${script}" "${HOME}/bin/${script_name}"
     fi
   done
 fi
@@ -60,11 +63,11 @@ if [[ -d "${private_bin_path}" ]]; then
   for script in "${private_bin_path}"/*.sh; do
     if [[ -f "${script}" ]]; then
       script_name=$(basename "${script}" .sh)
-      ln -sfv "${script}" ~/bin/"${script_name}"
+      ln -sfv "${script}" "${HOME}/bin/${script_name}"
     fi
   done
 fi
 
 if [[ "${os}" = linux ]]; then
-  ln -sfv "${bin_path}"/linux/apt-update.sh ~/bin/apt-update
+  ln -sfv "${bin_path}"/linux/apt-update.sh "${HOME}/bin/apt-update"
 fi
