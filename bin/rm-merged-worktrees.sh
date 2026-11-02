@@ -32,7 +32,13 @@ for worktree_path in ${worktrees}; do
   fi
 
   # Get the branch name for this worktree
-  branch=$(git worktree list --porcelain | grep -A2 "^worktree ${worktree_path}$" | grep '^branch ' | cut -d' ' -f2- | sed 's|^refs/heads/||')
+  branch=$(
+    git worktree list --porcelain \
+      | grep -A2 "^worktree ${worktree_path}$" \
+      | grep '^branch ' \
+      | cut -d' ' -f2- \
+      | sed 's|^refs/heads/||'
+  )
 
   # Skip if no branch is associated (detached HEAD)
   if [ -z "${branch}" ]; then
