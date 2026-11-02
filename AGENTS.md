@@ -7,7 +7,7 @@ This file provides guidance to AI coding agents when working with code in this r
 - When writing in English (e.g., code comments, Git commit messages, PR titles and bodies), use natural, concise, and plain wording wherever possible
 - Write `e.g.,` and `i.e.,` (with a trailing comma), not bare `e.g.` or `i.e.`
 
-## General guidelines
+## Roles of code, tests, commits, and comments
 
 - As a rule, code describes how, test code describes what, commit messages describe why, and code comments describe why not
 
